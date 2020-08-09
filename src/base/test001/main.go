@@ -17,8 +17,11 @@ func main() {
 			wg.Done()
 		}()
 		for _, v := range digestArr {
+			// 阻塞等待，直到chd有值，或者chd已关闭，都会打印v值
 			_, ok := <-chd
 			fmt.Println(v)
+			// 如果chd已关闭，会一直返回默认值false, 判断如果chd已经被关闭，
+			// 就不再往cha 写数据
 			if ok {
 				cha <- true
 			}
@@ -31,8 +34,11 @@ func main() {
 			wg.Done()
 		}()
 		for _, v := range []byte(charArr) {
+			// 阻塞等待，直到cha有值，或者cha已关闭，都会打印v值
 			_, ok := <-cha
 			fmt.Println(string(v))
+			// 如果cha已关闭，会一直返回默认值false, 判断如果cha已经被关闭，
+			// 就不再往chd 写数据
 			if ok {
 				chd <- true
 			}
