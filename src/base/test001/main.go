@@ -17,7 +17,6 @@ func main() {
 			wg.Done()
 		}()
 		for _, v := range digestArr {
-			fmt.Println("----")
 			<-chd
 			fmt.Println(v)
 			cha <- true
