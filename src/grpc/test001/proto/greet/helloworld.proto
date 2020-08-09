@@ -7,7 +7,7 @@ option go_package = ".;greet";
 service HelloService {
     rpc Say (SayRequest) returns (SayResponse) {
         option (google.api.http) = {
-            post: "/v1/h"
+            post: "/v1/hello/say"
             body: "*"
         };
     };
