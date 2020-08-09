@@ -7,8 +7,8 @@ import (
 
 func main() {
 	var wg sync.WaitGroup
-	chd := make(chan bool, 100)
-	cha := make(chan bool, 100)
+	chd := make(chan bool, 1)
+	cha := make(chan bool, 1)
 	var digestArr = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	var charArr = "abcdefghigk"
 	wg.Add(2)
@@ -17,9 +17,11 @@ func main() {
 			wg.Done()
 		}()
 		for _, v := range digestArr {
-			<-chd
+			_, ok := <-chd
 			fmt.Println(v)
-			cha <- true
+			if ok {
+				cha <- true
+			}
 		}
 		close(cha)
 	}()
@@ -29,9 +31,11 @@ func main() {
 			wg.Done()
 		}()
 		for _, v := range []byte(charArr) {
-			<-cha
+			_, ok := <-cha
 			fmt.Println(string(v))
-			chd <- true
+			if ok {
+				chd <- true
+			}
 		}
 		close(chd)
 	}()
