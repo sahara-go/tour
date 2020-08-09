@@ -19,11 +19,7 @@ func (s *HelloServer) Say(ctx context.Context, in *greet.SayRequest) (*greet.Say
 }
 
 func main() {
-	fmt.Println("start ...")
-	run()
-}
-
-func run() {
+	fmt.Println("starting ...")
 	lis, err := net.Listen("tcp", ":8999")
 	if err != nil {
 		log.Fatalf("failed to listen :%v", err)
