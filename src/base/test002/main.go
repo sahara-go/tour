@@ -102,4 +102,29 @@ func main() {
 	// 5 5
 	// 1 1
 	// 3 3
+
+	fmt.Println("range string类型，输出rune类型")
+	s := `汉语ab`
+	fmt.Println("len of s:", len(s))
+	for index, runeValue := range s {
+		fmt.Printf("%#U starts at byte position %d\n", runeValue, index)
+	}
+	// result
+	// len of s: 8
+	// U+6C49 '汉' starts at byte position 0
+	// U+8BED '语' starts at byte position 3
+	// U+0061 'a' starts at byte position 6
+	// U+0062 'b' starts at byte position 7
+
+	// 遍历数组，for循环中改变数组的值，结果不受影响
+	fmt.Println("遍历数组，for循环中改变数组的值，结果不受影响")
+	a4 := [3]int{1, 2, 3}
+	for k, v := range a4 {
+		if k == 0 {
+			a4[1] = 3
+		}
+		fmt.Println(k, v)
+	}
+	fmt.Println(a4)
+
 }
