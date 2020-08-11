@@ -15,7 +15,7 @@ func main() {
 		fmt.Println(resp)
 	case resp := <-AsyncCall(200):
 		fmt.Println(resp)
-	case resp := <-AsyncCall2(3000):
+	case resp := <-AsyncCall2(1000):
 		fmt.Println(resp)
 	}
 	//这段代码运行的结果会是200和50两种结果随机出现。
@@ -24,19 +24,25 @@ func main() {
 func AsyncCall(t int) <-chan int {
 	c := make(chan int, 1)
 	go func() {
-		time.Sleep(time.Microsecond * time.Duration(t))
+		time.Sleep(time.Millisecond * time.Duration(t))
+		fmt.Printf("chan 1 send %d \n", t)
 		c <- t
 	}()
+	fmt.Printf("AsyncCall %d finish \n", t)
 	return c
 }
 
 func AsyncCall2(t int) <-chan int {
+	t1 := time.Now()
+	fmt.Printf("AsyncCall2 %d in \n", t)
 	c := make(chan int, 1)
 	go func() {
-		time.Sleep(time.Microsecond * time.Duration(t))
+		time.Sleep(time.Millisecond * time.Duration(t))
+		fmt.Printf("chan 2 send %d \n", t)
 		c <- t
 	}()
 	// gc or some other reason cost some time
-	time.Sleep(200 * time.Microsecond)
+	time.Sleep(time.Duration(200) * time.Millisecond)
+	fmt.Printf("AsyncCall2 %d finish , time: %+v\n", t, time.Now().Sub(t1))
 	return c
 }
