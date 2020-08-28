@@ -1,10 +1,16 @@
 package main
 
 import (
-	"fmt"
-	pkg2 "github.com/sahara-gopher/tour/src/base/test013/pkg"
+//"fmt"
+//"github.com/sahara-gopher/tour/src/base/test013/pkg"
 )
 
-func main() {
-	fmt.Println(pkg2.Id)
-}
+var helloWorld = "你好，世界"
+
+func main()
+
+//func main() {
+//	fmt.Println(pkg.Id)
+//	fmt.Println(pkg.Name)
+//	fmt.Println(pkg.Name)
+//}
