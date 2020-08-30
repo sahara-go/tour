@@ -32,3 +32,9 @@ Golang 练习题汇总
 ## 算法
 
 - [冒泡排序算法](src/algorithm/test001/main.go)
+- [选择排序算法](src/algorithm/test002/main.go)
+
+## 设计模式
+
+- [单例设计模式](src/design-pattern/test001/main.go)
+- [简单工厂设计模式](src/design-pattern/test002/main.go)
