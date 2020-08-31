@@ -38,3 +38,5 @@ Golang 练习题汇总
 
 - [单例设计模式](src/design-pattern/test001/main.go)
 - [简单工厂设计模式](src/design-pattern/test002/main.go)
+- [工厂方法设计模式](src/design-pattern/test003/main.go)
+- [抽象工厂设计模式](src/design-pattern/test004/main.go)
