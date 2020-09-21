@@ -10,16 +10,6 @@ import (
 )
 
 func main() {
-	// 设置HTTP接入域名（此处以公共云生产环境为例）
-	endpoint := "http://1063092556517725.mqrest.cn-hangzhou.aliyuncs.com"
-	// AccessKey 阿里云身份验证，在阿里云服务器管理控制台创建
-	accessKey := "VMHacnM2KL3u18UV"
-	// SecretKey 阿里云身份验证，在阿里云服务器管理控制台创建
-	secretKey := "ZnKVHQvC4gNPjHnBiJm19kacLPD32l"
-	// 所属的 Topic
-	topic := "test_topic"
-	// Topic所属实例ID，默认实例为空
-	instanceId := "MQ_INST_1063092556517725_BXSuEzjW"
 
 	client := mq_http_sdk.NewAliyunMQClient(endpoint, accessKey, secretKey, "")
 
